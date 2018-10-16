@@ -5,7 +5,6 @@ public class User {
     public int id;
     public String name;
     public String email;
-    public int phonenumber;
     public String password;
 
 
@@ -30,24 +29,17 @@ public class User {
         return email;
     }
 
-    public void setEmail(){
+    public void setEmail(String email){
         this.email = email;
     }
 
-    public int getPhonenumber(){
-        return phonenumber;
-    }
-
-    public void setPhonenumber(){
-        this.phonenumber = phonenumber;
-    }
 
     public String getPassword(){
         return password;
     }
 
-    public void setPassword(){
-        this.password =password;
+    public void setPassword(String password){
+        this.password = password;
     }
 
 }
