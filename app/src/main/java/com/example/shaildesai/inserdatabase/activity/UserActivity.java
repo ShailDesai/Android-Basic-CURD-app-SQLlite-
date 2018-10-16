@@ -18,7 +18,7 @@ public class UserActivity extends AppCompatActivity {
 
         textviewname = (TextView) findViewById(R.id.textViewname);
         String nameFromIntent = getIntent().getStringExtra("EMAIL");
-        textviewname.setText("welcome" + nameFromIntent );
+        textviewname.setText("welcome " + nameFromIntent );
 
     }
 }

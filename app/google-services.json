@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "600079524008",
+    "firebase_url": "https://insertdatabase-f14ed.firebaseio.com",
+    "project_id": "insertdatabase-f14ed",
+    "storage_bucket": "insertdatabase-f14ed.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600079524008:android:6d2bd0bb7373f004",
+        "android_client_info": {
+          "package_name": "com.example.shaildesai.inserdatabase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600079524008-94l7robhu34rhqr3l0i9h28ngemoesdq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCppScIbczGxrkhEQlla6JHrxoFttA_vOA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

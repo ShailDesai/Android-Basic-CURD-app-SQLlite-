@@ -5,7 +5,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.shaildesai.inserdatabase.activity.firebase;
 import com.example.shaildesai.inserdatabase.model.User;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
@@ -62,6 +68,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.close();
         }
 
+
+
+public void fetch(){
+    List<firebase> datalist  = new ArrayList<firebase>();
+
+   Cursor c = getReadableDatabase().query(TABLE_USER,
+            new String[] {COLUMN_USER_NAME,COLUMN_USER_EMAIL},
+            null,null,null,null,null);
+   if(c.moveToLast()){
+       do {
+           datalist.add(new firebase(c.getString(c.getColumnIndex("user_name")),
+                   c.getString(c.getColumnIndex("user_email"))
+                  ));
+       }while (c.moveToNext());
+   }
+   if(datalist.size()>0){
+       DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
+       for(firebase f :datalist){
+           ref.push().setValue(f);
+       }
+
+
+
+   }
+
+}
 
 
 

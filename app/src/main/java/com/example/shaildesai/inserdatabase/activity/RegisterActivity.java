@@ -1,9 +1,8 @@
 package com.example.shaildesai.inserdatabase.activity;
 
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.Button;
@@ -29,7 +28,8 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
     private TextView loginlink;
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
-    private User user;;
+    private User user;
+    private SQLiteOpenHelper sqLiteHelper;
 
 
     @Override
@@ -37,7 +37,6 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
         getSupportActionBar().hide();
-
         initViews();
         initListner();
         initObjects();
@@ -65,6 +64,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
         inputValidation  = new InputValidation(activity);
         databaseHelper = new DatabaseHelper(activity);
         user = new User();
+
     }
 
     @Override
@@ -81,6 +81,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
     }
     private void postDataToSQLite(){
 
+
         println("hello my friend" + email);
         if (!databaseHelper.checkUser(email.getText().toString().trim()))
         {
@@ -94,6 +95,8 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
 
             Toast.makeText(this, "Succesfully inserted", Toast.LENGTH_SHORT).show();
             emptyInputEditText();
+            databaseHelper.fetch();
+
         }
         else{
             Toast.makeText(this, "Not inserted", Toast.LENGTH_SHORT).show();
@@ -110,4 +113,10 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
         email.setText(null);
         password.setText(null);
     }
-}
+
+
+
+
+
+    }
+
