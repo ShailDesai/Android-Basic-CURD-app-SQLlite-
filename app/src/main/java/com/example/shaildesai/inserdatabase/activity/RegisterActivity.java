@@ -131,7 +131,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
 
                 // set dialog message
                 alertDialogBuilder
-                        .setMessage("Click yes to get back to login screen!")
+                        .setMessage("Click yes to get back to login screens!")
                         .setCancelable(false)
                         .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
