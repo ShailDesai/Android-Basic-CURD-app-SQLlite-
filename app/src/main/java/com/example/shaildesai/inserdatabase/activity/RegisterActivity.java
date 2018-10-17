@@ -1,7 +1,10 @@
 package com.example.shaildesai.inserdatabase.activity;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewStub;
@@ -25,11 +28,13 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
     private EditText email;
     private EditText password;
     private Button submit;
+    private Button alert;
     private TextView loginlink;
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
     private User user;
     private SQLiteOpenHelper sqLiteHelper;
+
 
 
     @Override
@@ -40,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
         initViews();
         initListner();
         initObjects();
+        Loandailog();
 
     }
 
@@ -51,6 +57,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
         password = (EditText) findViewById(R.id.password);
 
         submit = (Button) findViewById(R.id.submit);
+        alert= (Button) findViewById(R.id.alert);
         loginlink = (TextView) findViewById(R.id.Loginlink);
 
     }
@@ -76,6 +83,9 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
             break;
         case R.id.Loginlink:
             finish();
+            break;
+        case R.id.alert:
+            Loandailog();
             break;
     }
     }
@@ -106,6 +116,52 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
 
 
         }
+
+    public void Loandailog(){
+        alert.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                        activity);
+
+                // set title
+                alertDialogBuilder.setTitle("Your Title");
+
+                // set dialog message
+                alertDialogBuilder
+                        .setMessage("Click yes to exit!")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                Intent intent = new Intent(activity, MainActivity.class);
+                                startActivity(intent);
+                                // if this button is clicked, close
+                                // current activity
+
+                            }
+                        })
+                        .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.cancel();
+                            }
+                        });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                // show it
+                alertDialog.show();
+            }
+        });
+    }
+
+
+
+
 
 
     private void emptyInputEditText(){
