@@ -147,6 +147,7 @@ public class RegisterActivity extends AppCompatActivity implements ViewStub.OnCl
                                 // if this button is clicked, just close
                                 // the dialog box and do nothing
                                 dialog.cancel();
+                                //bye bye
                             }
                         });
 
